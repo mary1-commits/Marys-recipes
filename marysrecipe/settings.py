@@ -30,6 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    'authentic-recipe-457331f032d1.herokuapp.com',
     'localhost',
     '8000-mary1commit-djangoproje-b4aq08mcsvk.ws-us117.gitpod.io',
     'hello-world25-dc3bb4046106.herokuapp.com',
