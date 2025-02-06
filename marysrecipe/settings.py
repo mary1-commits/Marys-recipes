@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
     '8000-mary1commit-djangoproje-b4aq08mcsvk.ws-us117.gitpod.io',
     'hello-world25-dc3bb4046106.herokuapp.com',
     '8000-mary1commit-djangoproje-b4aq08mcsvk.ws-eu117.gitpod.io',
+    '127.0.0.1',
 ]
 
 # Application definition
