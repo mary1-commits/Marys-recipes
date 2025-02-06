@@ -1,59 +1,45 @@
 {% extends "base.html" %}  {# If this is a child template, extend the base.html #}
 {% load static %}
-{% block head_title %}Somali Rice & Meat Recipe{% endblock %}
+{% block head_title %}About Me - My Somali Food Journey{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <h1 class="text-center">Somali Rice & Meat Recipe</h1>
-            <button id="toggleRecipe" class="btn btn-primary mt-3">Show Recipe</button>
+            <h1 class="text-center">About Me</h1>
+            <img src="{% static 'images/somali_food.jpg' %}" class="img-fluid rounded shadow mt-3" alt="Somali Food">
 
-            <div id="recipe" class="hidden mt-4 p-4 bg-light rounded shadow">
-                <h2>Ingredients</h2>
-                <ul>
-                    <li>2 cups basmati rice</li>
-                    <li>500g lamb or beef, cut into chunks</li>
-                    <li>1 onion, finely chopped</li>
-                    <li>3 cloves garlic, minced</li>
-                    <li>2 tomatoes, diced</li>
-                    <li>1 tsp cumin</li>
-                    <li>1 tsp cardamom</li>
-                    <li>1 tsp cinnamon</li>
-                    <li>Salt & pepper to taste</li>
-                    <li>4 cups water or broth</li>
-                    <li>2 tbsp oil</li>
-                    <li>Fresh coriander for garnish</li>
-                </ul>
+            <div class="mt-4 p-4 bg-light rounded shadow">
+                <h2>Welcome to My Somali Food Blog!</h2>
+                <p>
+                    Hi, I'm Maryan! As someone deeply connected to my Somali heritage, I started this blog to share my love for the rich, aromatic, and diverse flavors of Somali cuisine. 
+                    Growing up, food was more than just nourishment—it was a way to celebrate traditions, bring family together, and tell stories of resilience and history.
+                </p>
+                
+                <h3>Why Somali Food?</h3>
+                <p>
+                    Somali cuisine is a beautiful fusion of influences from the Middle East, India, and East Africa. Whether it’s the fragrant rice dishes, slow-cooked meats, or 
+                    the comforting sweetness of shaah (Somali spiced tea), every meal carries a deep cultural significance. The balance of spices like cardamom, cinnamon, and cumin 
+                    creates flavors that are both bold and comforting.
+                </p>
 
-                <h2>Instructions</h2>
-                <ol>
-                    <li>Heat oil in a pot and sauté onions until golden brown.</li>
-                    <li>Add garlic, tomatoes, and spices, cooking for a few minutes.</li>
-                    <li>Add meat and cook until browned.</li>
-                    <li>Pour in water or broth and simmer until meat is tender.</li>
-                    <li>Add rice, stir well, and cover until cooked.</li>
-                    <li>Fluff rice and garnish with fresh coriander before serving.</li>
-                </ol>
+                <h3>What You'll Find Here</h3>
+                <p>
+                    This blog is my space to explore and document traditional Somali recipes, family favorites, and modern takes on classic dishes. From the beloved 
+                    <strong>Bariis Iskukaris</strong> (Somali rice) to the soft, spongy <strong>Canjeero</strong>, my goal is to preserve and celebrate our culinary heritage.
+                </p>
+
+                <h3>Join Me on This Journey!</h3>
+                <p>
+                    Whether you’re Somali and looking for familiar flavors or new to Somali cuisine and eager to try something different, I hope this blog inspires you to cook, share, and enjoy.  
+                    Let’s keep the traditions alive—one meal at a time!
+                </p>
+
+                <p class="text-center mt-4">
+                    <em>Thanks for being here, and I hope you enjoy the journey!</em>
+                </p>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const toggleButton = document.getElementById("toggleRecipe");
-        const recipeDiv = document.getElementById("recipe");
-
-        toggleButton.addEventListener("click", function () {
-            if (recipeDiv.style.display === "none" || recipeDiv.style.display === "") {
-                recipeDiv.style.display = "block";
-                toggleButton.textContent = "Hide Recipe";
-            } else {
-                recipeDiv.style.display = "none";
-                toggleButton.textContent = "Show Recipe";
-            }
-        });
-    });
-</script>
 {% endblock %}
