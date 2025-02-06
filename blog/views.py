@@ -93,3 +93,6 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+def canjeero_recipe(request):
+    return render(request, 'canjeero_recipe.html')
