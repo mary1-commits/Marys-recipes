@@ -96,3 +96,9 @@ def comment_delete(request, slug, comment_id):
 
 def canjeero_recipe(request):
     return render(request, 'canjeero_recipe.html')
+def bariis_recipe(request):
+    return render(request, 'bariis_recipe.html')
+def suqaar_recipe(request):
+    return render(request, 'suqaar_recipe.html')
+def malawah_recipe(request):
+    return render(request, 'malawah_recipe.html')
