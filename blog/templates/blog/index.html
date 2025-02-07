@@ -9,13 +9,13 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for post in post_list %}
+                {% for post in posts %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/default.jpg' %}" alt="placeholder image">
+                                <img class="card-img-top" src="{% static 'images/somali_food.jpg' %}" alt="placeholder image">
                                 {% else %}
                                 <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                                 {% endif %}
@@ -40,60 +40,7 @@
             </div>
         </div>
 
-        <!-- Recipe Section -->
-        <div class="col-12 mt-5">
-            <h2 class="text-center">🌿 Traditional Somali Recipes 🌿</h2>
-            <div class="row">
-                <!-- Canjeero Recipe -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <img class="card-img-top" src="{% static 'images/canjeero.jpg' %}" alt="Somali Canjeero">
-                            <h4 class="mt-3">Canjeero (Anjero)</h4>
-                            <p class="text-muted"><em>A soft, spongy pancake-like bread enjoyed for breakfast.</em></p>
-                            <a href="{% url 'canjeero_recipe' %}" class="btn btn-primary">View Recipe</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bariis Iskukaris Recipe -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <img class="card-img-top" src="{% static 'images/bariis.jpg' %}" alt="Somali Bariis">
-                            <h4 class="mt-3">Bariis Iskukaris</h4>
-                            <p class="text-muted"><em>A flavorful spiced rice dish often served with meat or vegetables.</em></p>
-                            <a href="{% url 'bariis_recipe' %}" class="btn btn-primary">View Recipe</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Suqaar Recipe -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <img class="card-img-top" src="{% static 'images/suqaar.jpg' %}" alt="Somali Suqaar">
-                            <h4 class="mt-3">Suqaar (Beef Stir-fry)</h4>
-                            <p class="text-muted"><em>A quick and savory beef stir-fry with aromatic spices.</em></p>
-                            <a href="{% url 'suqaar_recipe' %}" class="btn btn-primary">View Recipe</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Malawah Recipe -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <img class="card-img-top" src="{% static 'images/malawah.jpg' %}" alt="Somali Malawah">
-                            <h4 class="mt-3">Malawah</h4>
-                            <p class="text-muted"><em>A sweet Somali pancake served with honey or butter.</em></p>
-                            <a href="{% url 'malawah_recipe' %}" class="btn btn-primary">View Recipe</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+               
 
     {% if is_paginated %}
     <nav aria-label="Page navigation">
