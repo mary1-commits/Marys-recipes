@@ -1,39 +1,47 @@
+/* General Styles */
 body {
-    background-color: #F9FAFC;
+    background-color: #FAF3E0; /* Warm beige */
+    color: #5C4033; /* Deep brown for readability */
+    font-family: 'Lora', serif; /* More casual, warm-feeling font */
 }
 
+/* Brand & Typography */
 .brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: #C85C5C; /* Warm terracotta */
 }
 
 .red-o {
-    color: #E84610;
+    color: #B22222; /* Rich warm red */
 }
 
 .thin {
     font-weight: 300;
 }
 
+/* Background Colors */
 .light-bg {
-    background-color: #fff;
+    background-color: #FFF8E1; /* Soft warm cream */
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #8B5E3C; /* Warm brown */
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #FAF3E0; /* Light beige */
 }
 
+/* Card Styling */
 .card {
-    border: none;
-    background-color: transparent;
+    border: 1px solid #E3A857; /* Mustard-colored subtle border */
+    background-color: #FFF8E1; /* Warm cream */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Image Container */
 .image-container {
     position: relative;
 }
@@ -43,7 +51,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #188181;
+    background-color: #B22222; /* Warm red */
 }
 
 .scale {
@@ -51,12 +59,14 @@ body {
     height: auto;
 }
 
+/* Author Name */
 .author {
     color: white;
     margin: 4px;
     text-transform: uppercase;
 }
 
+/* Masthead */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -67,7 +77,7 @@ body {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #8B5E3C; /* Warm brown */
     color: white;
     position: relative;
 }
@@ -84,21 +94,22 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #8B5E3C; /* Warm brown */
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
 }
 
+/* Post Titles & Links */
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: #C85C5C; /* Warm terracotta */
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #B22222; /* Warm deep red */
 }
 
 .post-title {
@@ -108,52 +119,58 @@ body {
 
 .post-subtitle {
     margin-left: 5%;
-    color: lightgray;
+    color: #8B5E3C; /* Warm brown */
 }
 
+/* Buttons */
 .btn-signup,
 .btn-edit {
-    background-color: #188181;
-    color: #fff;
+    background-color: #E3A857; /* Warm golden mustard */
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
 .btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+.btn-edit:hover {
+    background-color: #C85C5C; /* Warm red on hover */
+    color: #FFF;
 }
 
+/* Links */
 .link {
-    color: #23BBBB;
+    color: #D2691E; /* Rich burnt orange */
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: #8B5E3C; /* Warm brown */
     text-decoration: underline;
 }
 
+/* Like & Delete Buttons */
 .btn-like {
-    color: #E84610;
+    color: #B22222; /* Warm deep red */
     border: none;
     background: transparent;
 }
 
 .btn-delete {
     color: #fff;
-    background: #E84610;
+    background: #B22222; /* Stronger warm red */
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #8B5E3C; /* Warm brown */
     background: transparent;
     border: none;
 }
 
+/* Text & Miscellaneous */
 .faded {
-    color: rgb(172, 175, 175);
+    color: rgb(172, 140, 120);
 }
 
 .approval {
