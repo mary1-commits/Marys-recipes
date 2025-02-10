@@ -1,53 +1,40 @@
 from django.shortcuts import render, get_object_or_404, reverse
-
-from django.views import generic
+from django.views import generic, View
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
 from .forms import CommentForm
 
+# List View for Blog Posts
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
     context_object_name = "posts"
 
+# Detail View for a Single Blog Post
 class PostDetail(generic.DetailView):
     model = Post
     template_name = "blog/post_detail.html"
     context_object_name = "post"
 
+# Function-Based View for Blog Post Details & Comments
 def post_detail(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
-
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    comments = post.comments.all().order_by("-created_on")
+    comments = post.comments.filter(approved=True).order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
-    if request.method == "POST":
-     comment_form = CommentForm(data=request.POST)
-    if comment_form.is_valid():
-        comment = comment_form.save(commit=False)
-        comment.author = request.user
-        comment.post = post
-        comment.save()
-        messages.add_message(
-        request, messages.SUCCESS,
-        'Comment submitted and awaiting approval'
-    )
-
     comment_form = CommentForm()
+
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+            messages.success(request, 'Comment submitted and awaiting approval!')
+            return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
     return render(
         request,
@@ -57,53 +44,53 @@ def post_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
-       
         }
     )
-def comment_edit(request, slug, comment_id):
- """
- view to edit comments
- """
- if request.method == "POST":
 
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
-        comment = get_object_or_404(Comment, pk=comment_id)
-        comment_form = CommentForm(data=request.POST, instance=comment)
-
-        if comment_form.is_valid() and comment.author == request.user:
+# Create Comment View
+class CommentCreateView(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug)
+        comment_form = CommentForm(data=request.POST)
+        
+        if comment_form.is_valid():
             comment = comment_form.save(commit=False)
+            comment.author = request.user
             comment.post = post
-            comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.success(request, 'Comment submitted and awaiting approval!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.error(request, 'Error submitting comment!')
 
- return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
-
-def comment_delete(request, slug, comment_id):
-    """
-    view to delete comment
-    """
-    queryset = Post.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
-    comment = get_object_or_404(Comment, pk=comment_id)
-
-    if comment.author == request.user:
-        comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
-    else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+# Edit Comment View
+def comment_edit(request, slug, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id, author=request.user)
+    
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST, instance=comment)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.approved = False  # Requiring re-approval after edits
+            comment.save()
+            messages.success(request, 'Comment updated successfully!')
+        else:
+            messages.error(request, 'Error updating comment!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
-def canjeero_recipe(request):
-    return render(request, 'canjeero_recipe.html')
-def bariis_recipe(request):
-    return render(request, 'bariis_recipe.html')
-def suqaar_recipe(request):
-    return render(request, 'suqaar_recipe.html')
-def malawah_recipe(request):
-    return render(request, 'malawah_recipe.html')
+# Delete Comment View
+def comment_delete(request, slug, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id, author=request.user)
+
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, 'Comment deleted successfully!')
+
+    return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+# Dynamic Recipe Detail View (For all Somali recipes)
+def recipe_detail(request, slug):
+    recipe = get_object_or_404(Post, slug=slug, status=1)  # Assuming recipes are also Posts
+    return render(request, "blog/post_detail.html", {"post": recipe})
