@@ -1,45 +1,124 @@
-{% extends "base.html" %}  {# If this is a child template, extend the base.html #}
+{% extends "base.html" %}
 {% load static %}
 {% block head_title %}About Me - My Somali Food Journey{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
+<!-- Hero Section -->
+<div class="hero-section position-relative mb-5">
+    <div class="overlay position-absolute w-100 h-100 bg-dark" style="opacity: 0.4;"></div>
+    <img src="{% static 'images/somali_food.jpg' %}" class="w-100" style="height: 60vh; object-fit: cover;" alt="Somali Food">
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+        <h1 class="display-3 fw-bold mb-3">Mary's Recipes!</h1>
+        <p class="lead">Exploring the Rich Flavors of Somali Cuisine</p>
+    </div>
+</div>
+
+<div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h1 class="text-center">Mary's Recipes!</h1>
-            <img src="{% static 'images/somali_food.jpg' %}" class="img-fluid rounded shadow mt-3" alt="Somali Food">
+        <div class="col-lg-8 offset-lg-2">
+            <!-- Author Introduction Card -->
+            <div class="card border-0 shadow-sm mb-5">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-4">
+                        <img src="{% static 'images/user_img.png' %}" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;" alt="Maryan's Profile">
+                        <div>
+                            <h5 class="mb-1">Hi, I'm Maryan! 👋</h5>
+                            <p class="text-muted mb-0">Somali Food Enthusiast & Recipe Creator</p>
+                        </div>
+                    </div>
+                    <p class="lead mb-4">
+                        As someone deeply connected to my Somali heritage, I started this blog to share my love for the rich, aromatic,
+                        and diverse flavors of Somali cuisine.
+                    </p>
+                </div>
+            </div>
 
-            <div class="mt-4 p-4 bg-light rounded shadow">
-                <h2>Welcome to My Somali Food Blog!</h2>
-                <p>
-                    Hi, I'm Maryan! As someone deeply connected to my Somali heritage, I started this blog to share my love for the rich, aromatic, and diverse flavors of Somali cuisine. 
-                    Growing up, food was more than just nourishment—it was a way to celebrate traditions, bring family together, and tell stories of resilience and history.
-                </p>
-                
-                <h3>Why Somali Food?</h3>
-                <p>
-                    Somali cuisine is a beautiful fusion of influences from the Middle East, India, and East Africa. Whether it’s the fragrant rice dishes, slow-cooked meats, or 
-                    the comforting sweetness of shaah (Somali spiced tea), every meal carries a deep cultural significance. The balance of spices like cardamom, cinnamon, and cumin 
-                    creates flavors that are both bold and comforting.
-                </p>
+            <!-- Main Content -->
+            <div class="content-sections">
+                <!-- Why Somali Food Section -->
+                <div class="mb-5">
+                    <h2 class="display-6 mb-4">Why Somali Food?</h2>
+                    <div class="card border-0 bg-light">
+                        <div class="card-body p-4">
+                            <p class="mb-0">
+                                Somali cuisine is a beautiful fusion of influences from the Middle East, India, and East Africa.
+                                Whether it's the fragrant rice dishes, slow-cooked meats, or the comforting sweetness of
+                                <em>shaah</em> (Somali spiced tea), every meal carries a deep cultural significance. The balance
+                                of spices like cardamom, cinnamon, and cumin creates flavors that are both bold and comforting.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-                <h3>What You'll Find Here</h3>
-                <p>
-                    This blog is my space to explore and document traditional Somali recipes, family favorites, and modern takes on classic dishes. From the beloved 
-                    <strong>Bariis Iskukaris</strong> (Somali rice) to the soft, spongy <strong>Canjeero</strong>, my goal is to preserve and celebrate our culinary heritage.
-                </p>
+                <!-- What You'll Find Section -->
+                <div class="mb-5">
+                    <h2 class="display-6 mb-4">What You'll Find Here</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Traditional Recipes</h5>
+                                    <p class="card-text">Authentic Somali dishes passed down through generations, including the beloved
+                                    <strong>Bariis Iskukaris</strong> and soft, spongy <strong>Canjeero</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">Modern Interpretations</h5>
+                                    <p class="card-text">Contemporary takes on classic dishes, making Somali cuisine accessible
+                                    while preserving its authentic flavors.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <h3>Join Me on This Journey!</h3>
-                <p>
-                    Whether you’re Somali and looking for familiar flavors or new to Somali cuisine and eager to try something different, I hope this blog inspires you to cook, share, and enjoy.  
-                    Let’s keep the traditions alive—one meal at a time!
-                </p>
-
-                <p class="text-center mt-4">
-                    <em>Thanks for being here, and I hope you enjoy the journey!</em>
-                </p>
+                <!-- Call to Action -->
+                <div class="text-center py-5">
+                    <h2 class="display-6 mb-4">Join Me on This Journey!</h2>
+                    <p class="lead mb-4">Whether you're Somali and looking for familiar flavors or new to Somali cuisine and
+                    eager to try something different, I hope this blog inspires you to cook, share, and enjoy.</p>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button class="btn btn-primary btn-lg px-4 gap-3">Latest Recipes</button>
+                        <button class="btn btn-outline-secondary btn-lg px-4">Subscribe</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        height: 60vh;
+        overflow: hidden;
+    }
+
+    .content-sections h2 {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .btn-primary {
+        background-color: #e67e22;
+        border-color: #e67e22;
+    }
+
+    .btn-primary:hover {
+        background-color: #d35400;
+        border-color: #d35400;
+    }
+</style>
 {% endblock %}
