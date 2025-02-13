@@ -1,131 +1,158 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+Mary's Recipes - Share Your Culinary Creations!
+A fully responsive Django web application that allows users to share, review, and comment on their favorite (or least favorite) recipes. Users can create their own recipe posts, interact with other users through comments, and explore a collection of dishes from around the world.
 
-Welcome maryan aden,
+Screenshot of Site
+(Insert screenshot here)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Deployed Link
+https://authentic-recipe-457331f032d1.herokuapp.com/
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+Contents
+UX - User Experience
+User Stories
+Wireframes
+Design
+Accessibility
+Fonts
+Database Planning
+Key Features
+General
+Recipes
+Comments
+Future Features
+AI Implementation
+Testing
+Deployment
+Heroku
+PostgreSQL
+Technologies Used
+Credits
+Acknowledgements
+UX - User Experience
+User Stories
+User Story	Description	Priority
+Account Registration	As a site user, I want to register for an account so that I can post and save my recipes.	Must Have
+Recipe List	As a site user, I want to view a list of all available recipes so that I can explore new dishes.	Must Have
+Detailed Recipe Page	As a site user, I want to click on a recipe to view full details, including ingredients and instructions.	Must Have
+Create Recipes	As a site user, I want to be able to submit my own recipes so that I can share them with others.	Must Have
+Edit & Delete Recipes	As a site user, I want to be able to edit and delete my recipes so that I can update or remove them.	Must Have
+Post Comments	As a site user, I want to comment on recipes so that I can interact with the community.	Must Have
+Moderate Comments	As a site admin, I want to approve or delete comments so that I can maintain a positive environment.	Must Have
+Pagination	As a user, I want the recipe list to be paginated so that I can browse easily.	Should Have
+Recipe Categories	As a user, I want recipes to be categorized (e.g., desserts, main courses) so that I can find specific types of dishes.	Should Have
+Like & Favorite Recipes	As a user, I want to save my favorite recipes so that I can easily find them later.	Could Have
+Wireframes
+Mobile Wireframes: (Insert images here)
+Tablet Wireframes: (Insert images here)
+Desktop Wireframes: (Insert images here)
+Design
+Color Scheme
+#1a3c40 – Deep Green
+#f4eae0 – Soft Beige
+#c08457 – Warm Brown
+#e1b382 – Light Brown
+#a15c38 – Rustic Orange
+Coolors was used to help finalize the color palette.
 
-## Gitpod Reminders
+Accessibility
+Semantic HTML: Proper heading structures and meaningful elements.
+Color Contrast: Checked for readability.
+Responsive Design: Works across all screen sizes.
+Fonts
+Playfair Display: For headers, giving an elegant and refined touch.
+Lato: A clean and readable sans-serif for body text.
+Database Planning
+Models
+User – Stores user information.
+Recipe – Contains details about each recipe (title, description, ingredients, instructions, image, etc.).
+Comment – Stores user comments on recipes.
+Key Features
+General
+Navbar: Navigation links to Home, Recipes, Create Recipe, Login/Logout.
+Footer: Displays copyright and project name.
+Recipes
+CRUD Functionality: Users can create, read, edit, and delete their own recipes.
+Image Uploads: Recipes include an image upload feature.
+Search & Filters: Users can search for recipes or filter by categories.
+Recipe Details Page: Displays recipe title, ingredients, instructions, and comments.
+Comments
+CRUD Functionality: Users can post, edit, and delete comments.
+Moderation: Admins can approve or delete inappropriate comments.
+Future Features
+User Profiles: Users will have profiles showing their submitted recipes and interactions.
+Recipe Ratings: A 5-star rating system for recipes.
+Shopping List Generator: Users can generate a shopping list from recipe ingredients.
+AI-Powered Recommendations: Suggest similar recipes based on user preferences.
+AI Implementation
+AI tools like GitHub Copilot were used for:
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Assisting in writing Django models and views.
+Troubleshooting form validation issues.
+Helping structure JavaScript functions for interactivity.
+Challenges faced with Copilot:
 
-`python3 -m http.server`
+Occasionally generated incorrect function names.
+Required manual debugging for Django template errors.
+Testing
+See TESTING.md for details on manual testing, validators, and Lighthouse results.
 
-A blue button should appear to click: _Make Public_,
+Deployment
+Heroku
+Steps for deploying on Heroku:
 
-Another blue button should appear to click: _Open Browser_.
+Install dependencies:
+bash
+Copy
+Edit
+pip install gunicorn django-heroku
+Create requirements.txt:
+bash
+Copy
+Edit
+pip freeze > requirements.txt
+Create a Procfile:
+bash
+Copy
+Edit
+web: gunicorn marys_recipes.wsgi
+Set up Heroku:
+bash
+Copy
+Edit
+heroku create marys-recipes
+Configure environment variables in Heroku:
+ini
+Copy
+Edit
+DISABLE_COLLECTSTATIC=1
+DATABASE_URL=your-database-url
+SECRET_KEY=your-secret-key
+DEBUG=False
+Deploy from GitHub or push manually:
+bash
+Copy
+Edit
+git push heroku main
+PostgreSQL
+The project uses a PostgreSQL database for storing user and recipe data.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+Technologies Used
+Django: Web framework for the application.
+PostgreSQL: Database management system.
+Heroku: Deployment platform.
+Bootstrap: Front-end framework for styling.
+GitHub: Version control and repository hosting.
+Pillow: Image processing library for handling recipe images.
+Summernote: WYSIWYG editor for recipe descriptions.
+Credits
+Images
+Recipe images from Unsplash & Pexels.
+Code References
+Used Django documentation for authentication and form handling.
+Referenced "I Think, Therefore I Blog" tutorial for comment functionality.
+Acknowledgements
+A big thank you to:
 
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-### Connecting your Mongo database
-
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**June 18, 2024,** Add Mongo back into template
-
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+My fellow developers for their feedback and ideas.
+Django community for detailed documentation.
+Friends & family for testing and suggesting features.
