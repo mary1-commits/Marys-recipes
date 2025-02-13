@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.shortcuts import render, get_object_or_404, reverse, redirect
@@ -196,6 +196,38 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
+
+class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/post_detail.html'
+    pk_url_kwarg = 'comment_id'
+
+    def test_func(self):
+        comment = self.get_object()
+        return self.request.user == comment.author
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        comment = self.get_object()
+        if 'comment_form' not in context:
+            context['comment_form'] = self.get_form()
+        context['post'] = comment.post
+        context['comments'] = comment.post.comments.all().select_related('author')
+        context['comment_count'] = comment.post.comments.count()
+        context['editing_comment'] = comment
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if not self.request.POST:
+            # For GET requests, initialize form with existing comment data
+            kwargs['initial'] = {'body': self.get_object().body}
+        return kwargs
+
+
+    def get_success_url(self):
+        return reverse('post_detail', kwargs={'slug': self.object.post.slug})
 
 @login_required
 def approve_comment(request, comment_id):
