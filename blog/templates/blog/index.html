@@ -1,68 +1,158 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block content %}
+<!-- Hero Section -->
+<div class="hero-banner text-center py-5 mb-4">
+    <div class="container">
+        <h1 class="display-5 mb-3">Latest Recipes</h1>
+        <p class="lead">Discover the flavors of Somali cuisine</p>
+    </div>
+</div>
 
-<!-- index.html content starts here -->
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for post in posts %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/somali_food.jpg' %}" alt="placeholder image">
-                                {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ post.author }}</p>
-                                </div>
-                            </div>
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                <h2 class="card-title">{{ post.title }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ post.created_on }}</p>
-                        </div>
+<!-- Blog Posts Grid -->
+<div class="container">
+    <div class="row g-4">
+        {% for post in posts %}
+        <div class="col-md-4">
+            <div class="card blog-card h-100 border-0 shadow-sm">
+                <div class="image-container position-relative">
+{#                    {% if "placeholder" in post.featured_image.url %}#}
+{#                    <img class="card-img-top mb-3" src="{% static 'images/somali_food.jpg' %}" alt="placeholder image">#}
+{#                    {% else %}#}
+{#                    <img class="card-img-top" src="{% static 'images/post-placeholder.jpg' %}" alt="{{ post.title }}">#}
+{#                    {% endif %}#}
+                    <div class="author-badge">
+                        <span class="">{{ post.author }}</span>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
+                <div class="card-body">
+                    <a href="{% url 'post_detail' post.slug %}" class="post-link text-decoration-none">
+                        <h2 class="card-title h4 text-spice">{{ post.title }}</h2>
+                        <p class="card-text text-muted">{{ post.excerpt }}</p>
+                    </a>
+                    <div class="mt-3 d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ post.created_on|date:"M d, Y" }}</small>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-outline-spice btn-sm">Read More</a>
+                    </div>
+                </div>
             </div>
         </div>
-
-               
+        {% endfor %}
+    </div>
 
     {% if is_paginated %}
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" class="my-5">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+            <li class="page-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link pagination-spice">&laquo; Previous</a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li>
-                <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+            <li class="page-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link pagination-spice">Next &raquo;</a>
             </li>
             {% endif %}
         </ul>
     </nav>
     {% endif %}
 </div>
-
-<!-- index.html content ends here -->
 {% endblock %}
 
 {% block copyright %}
-    Copyright 2023 Matt Rudge
+<footer class="footer-spice py-4 text-center">
+    <div class="container">
+        <p class="mb-0 text-white">&copy; {% now "Y" %} Mary's Recipes - Celebrating Somali Cuisine</p>
+    </div>
+</footer>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+        --spice-primary: #e67e22;
+        --spice-secondary: #d35400;
+        --spice-light: #fff3e0;
+        --spice-dark: #2c3e50;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+        background: linear-gradient(135deg, var(--spice-primary), var(--spice-secondary));
+        margin-top: -1.5rem;  /* Adjust based on your navbar height */
+    }
+
+    /* Card Styling */
+    .blog-card {
+        transition: transform 0.3s ease-in-out;
+        background-color: white;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .image-container {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .card-img-top {
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .author-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: var(--spice-primary);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    /* Typography */
+    .text-spice {
+        color: var(--spice-dark);
+    }
+
+    .post-link:hover .text-spice {
+        color: var(--spice-primary);
+    }
+
+    /* Buttons */
+    .btn-outline-spice {
+        color: var(--spice-primary);
+        border-color: var(--spice-primary);
+    }
+
+    .btn-outline-spice:hover {
+        color: white;
+        background-color: var(--spice-primary);
+    }
+
+    /* Pagination */
+    .pagination-spice {
+        color: var(--spice-primary);
+        border-color: var(--spice-primary);
+    }
+
+    .pagination-spice:hover {
+        background-color: var(--spice-primary);
+        color: white;
+        border-color: var(--spice-primary);
+    }
+
+    /* Footer */
+    .footer-spice {
+        background-color: var(--spice-dark);
+    }
+</style>
 {% endblock %}
