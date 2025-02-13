@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card border-0 shadow-lg">
+                <!-- Form Header -->
+                <div class="card-header bg-gradient border-0 py-4">
+                    <h2 class="card-title text-center mb-0">Create Your Blog Post</h2>
+                </div>
+
+                <div class="card-body p-5">
+                    <form method="POST" enctype="multipart/form-data" class="custom-form">
+                        {% csrf_token %}
+
+                        <!-- Title Field -->
+                        <div class="form-group mb-4">
+                            <label for="{{ form.title.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-heading me-2"></i>Title
+                            </label>
+                            <div class="input-group">
+                                {{ form.title }}
+                                {% if form.title.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.title.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <small class="text-muted">Choose a catchy title for your recipe</small>
+                        </div>
+
+                        <!-- Content Field -->
+                        <div class="form-group mb-4">
+                            <label for="{{ form.content.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-book-open me-2"></i>Content
+                            </label>
+                            <div class="input-group">
+                                {{ form.content }}
+                                {% if form.content.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.content.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <small class="text-muted">Share your recipe instructions, ingredients, and cooking tips</small>
+                        </div>
+
+                        <!-- Excerpt Field -->
+                        <div class="form-group mb-4">
+                            <label for="{{ form.excerpt.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-quote-left me-2"></i>Brief Description
+                            </label>
+                            <div class="input-group">
+                                {{ form.excerpt }}
+                                {% if form.excerpt.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.excerpt.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <small class="text-muted">Write a short summary to appear in recipe previews</small>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-paper-plane me-2"></i>Publish Recipe
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_css %}
+<style>
+    :root {
+        --primary-color: #e67e22;
+        --primary-dark: #d35400;
+        --light-bg: #fff9f5;
+    }
+
+    body {
+        background-color: var(--light-bg);
+    }
+
+    /* Card Styling */
+    .card {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    }
+
+    /* Form Styling */
+    .custom-form input[type="text"],
+    .custom-form textarea {
+        border: 2px solid #eee;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+
+    .custom-form input[type="text"]:focus,
+    .custom-form textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
+        outline: none;
+    }
+
+    .custom-form label {
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+    }
+
+    .custom-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Help Text Styling */
+    .text-muted {
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+
+    /* Error Styling */
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 2rem;
+        }
+
+        .btn-lg {
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+        }
+    }
+
+    /* Custom TextArea Height */
+    #id_content {
+        min-height: 200px;
+    }
+
+    #id_excerpt {
+        min-height: 100px;
+    }
+</style>
+{% endblock %}
+
+{% endblock content %}
