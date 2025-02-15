@@ -10,7 +10,11 @@
                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
-                <img src="{% static 'images/somali_food.jpg' %}" class="scale" alt="placeholder">
+                <img src="
+                {% if 'placeholder' in post.featured_image.url %}
+                {% static 'images/somali_food.jpg' %}
+                {% else %} {{ post.featured_image.url }}
+                {% endif %}" class="scale" alt="placeholder">
             </div>
         </div>
     </div>

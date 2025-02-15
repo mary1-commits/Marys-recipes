@@ -17,11 +17,11 @@
         <div class="col-md-4">
             <div class="card blog-card h-100 border-0 shadow-sm">
                 <div class="image-container position-relative">
-{#                    {% if "placeholder" in post.featured_image.url %}#}
-{#                    <img class="card-img-top mb-3" src="{% static 'images/somali_food.jpg' %}" alt="placeholder image">#}
-{#                    {% else %}#}
-{#                    <img class="card-img-top" src="{% static 'images/post-placeholder.jpg' %}" alt="{{ post.title }}">#}
-{#                    {% endif %}#}
+                    {% if "placeholder" in post.featured_image.url %}
+                    <img class="card-img-top mb-3" src="{% static 'images/somali_food.jpg' %}" alt="placeholder image">
+                    {% else %}
+                    <img class="card-img-top" src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                    {% endif %}
                     <div class="author-badge">
                         <span class="">{{ post.author }}</span>
                     </div>

@@ -30,6 +30,20 @@
                             <small class="text-muted">Choose a catchy title for your recipe</small>
                         </div>
 
+                        <!-- Featured Image Field -->
+                        <div class="form-group mb-4">
+                            <label for="{{ form.featured_image.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-image me-2"></i>Featured Image
+                            </label>
+                            <div class="input-group">
+                                {{ form.featured_image }}
+                                {% if form.featured_image.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.featured_image.errors }}</div>
+                                {% endif %}
+                            </div>
+                            <small class="text-muted">Upload a high-quality image of your recipe (Recommended size: 1200x800px)</small>
+                        </div>
+
                         <!-- Content Field -->
                         <div class="form-group mb-4">
                             <label for="{{ form.content.id_for_label }}" class="form-label fw-bold">
@@ -95,7 +109,8 @@
 
     /* Form Styling */
     .custom-form input[type="text"],
-    .custom-form textarea {
+    .custom-form textarea,
+    .custom-form input[type="file"] {
         border: 2px solid #eee;
         border-radius: 8px;
         padding: 12px 15px;
@@ -104,8 +119,14 @@
         width: 100%;
     }
 
+    .custom-form input[type="file"] {
+        padding: 8px;
+        cursor: pointer;
+    }
+
     .custom-form input[type="text"]:focus,
-    .custom-form textarea:focus {
+    .custom-form textarea:focus,
+    .custom-form input[type="file"]:focus {
         border-color: var(--primary-color);
         box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
         outline: none;
