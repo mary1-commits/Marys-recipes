@@ -134,13 +134,9 @@ See `TEST.md` for details on manual testing, validators, and Lighthouse results.
 
 ## 🌍 Deployment  
 
-### **Heroku Deployment**
-1. **Install dependencies**:
-   ```sh
-   pip install gunicorn django-heroku
-   ## Deployment
+## Deployment
 
-**Mary's Recipe Blog** has been deployed using [Heroku](https://www.heroku.com/), a cloud platform for building, running, and scaling applications. Below is a detailed guide on how the deployment was set up.
+**Mary's Recipe Blog** has been deployed using [Heroku](https://www.heroku.com/), a cloud platform for building, running, and scaling applications. Below is a detailed guide on how the deployment was set up, including the use of an `env.py` file for managing sensitive environment variables.
 
 ### Prerequisites
 Before deploying to Heroku, make sure you have the following installed:
@@ -185,60 +181,108 @@ Before deploying to Heroku, make sure you have the following installed:
        heroku addons:create heroku-postgresql:hobby-dev
        ```
 
-4. **Handle static files**:
-   - To manage static files in production, install the `whitenoise` package:
-     ```bash
-     pip install whitenoise
-     ```
-   - Update `settings.py` to use Whitenoise for static files:
-     ```python
-     MIDDLEWARE = [
-         'whitenoise.middleware.WhiteNoiseMiddleware',
-         ...
-     ]
-     STATIC_URL = '/static/'
-     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-     ```
-   - Collect static files by running:
-     ```bash
-     python manage.py collectstatic
-     ```
+4. **Use an `env.py` for Environment Variables**:
+   - It's a good practice to keep sensitive information such as `SECRET_KEY`, database credentials, and other settings outside of the codebase.
+   - Create a `env.py` file to manage these variables locally (for development) and securely use them on Heroku. The file should not be pushed to GitHub; it should be included in your `.gitignore` file.
+   
+   Here's an example of the `env.py` file:
+   ```python
+   import os
 
-5. **Commit and push changes to Git**:
-   - Add and commit all changes:
-     ```bash
-     git add .
-     git commit -m "Prepare for Heroku deployment"
-     ```
-   - Push to Heroku:
-     ```bash
-     git push heroku master
-     ```
+   def get_env_variable(var_name):
+       try:
+           return os.environ[var_name]
+       except KeyError:
+           raise EnvironmentError(f"Set the {var_name} environment variable")
 
-6. **Set environment variables**:
-   - Set necessary environment variables such as `SECRET_KEY` and `DEBUG`:
-     ```bash
-     heroku config:set SECRET_KEY=your_secret_key
-     heroku config:set DEBUG=False
-     ```
-   - Run migrations to set up the database:
-     ```bash
-     heroku run python manage.py migrate
-     ```
+   SECRET_KEY = get_env_variable('SECRET_KEY')
+   DEBUG = bool(int(get_env_variable('DEBUG')))
+Add the following to your settings.py to read values from the env.py:
+python
+Copy
+Edit
+from env import SECRET_KEY, DEBUG
 
-7. **Open the app**:
-   - Once the app is deployed, you can access it by running:
-     ```bash
-     heroku open
-     ```
+SECRET_KEY = SECRET_KEY
+DEBUG = DEBUG
+On Heroku, set the environment variables using the Heroku CLI:
+bash
+Copy
+Edit
+heroku config:set SECRET_KEY=your_secret_key
+heroku config:set DEBUG=False
+Handle static files:
 
-8. **Monitor the app**:
-   - To view logs for the app, use:
-     ```bash
-     heroku logs --tail
-     ```
+To manage static files in production, install the whitenoise package:
+bash
+Copy
+Edit
+pip install whitenoise
+Update settings.py to use Whitenoise for static files:
+python
+Copy
+Edit
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...
+]
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+Collect static files by running:
+bash
+Copy
+Edit
+python manage.py collectstatic
+Commit and push changes to Git:
 
-### Troubleshooting
-- If you encounter issues, check the Heroku logs for detailed error messages:
-  ```bash
-  heroku logs --tail
+Add and commit all changes:
+bash
+Copy
+Edit
+git add .
+git commit -m "Prepare for Heroku deployment"
+Push to Heroku:
+bash
+Copy
+Edit
+git push heroku master
+Set environment variables:
+
+Set any additional environment variables:
+bash
+Copy
+Edit
+heroku config:set SECRET_KEY=your_secret_key
+heroku config:set DEBUG=False
+heroku config:set DATABASE_URL=your_database_url
+Run migrations to set up the database:
+bash
+Copy
+Edit
+heroku run python manage.py migrate
+Open the app:
+
+Once the app is deployed, you can access it by running:
+bash
+Copy
+Edit
+heroku open
+Monitor the app:
+
+To view logs for the app, use:
+bash
+Copy
+Edit
+heroku logs --tail
+Troubleshooting
+If you encounter issues, check the Heroku logs for detailed error messages:
+bash
+Copy
+Edit
+heroku logs --tail
+Ensure all environment variables are correctly set, especially the SECRET_KEY, DEBUG, and database configurations.
+Ensure that you’ve run all necessary migrations:
+bash
+Copy
+Edit
+heroku run python manage.py migrate
