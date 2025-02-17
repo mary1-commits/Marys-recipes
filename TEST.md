@@ -119,17 +119,20 @@ To improve next time, I will allocate more time for code review and ensure adher
 | File                   | Status   |
 |------------------------|----------|
 | settings.py            | settings.py |
-![Settings py](static/images/settings.py)
+![Settings py](static/images/settings.py.png)
 | urls.py                | urls.py     |
-![Urls py](static/images/urls.py)
+![Urls py](static/images/urls.py.png)
 | blog/views.py       | views.py    |
 ![blog views](static/images/blogsviews.py.png)
 | blog/urls.py        | blog/urls.py |
+![blog urls](static/images/blogs-urls-py.png)
 | blog/models.py      | models.py   |
+![blog models](static/images/blogs-model.py.png.png)
 | blog/admin.py       | admin.py    |
+![blog admins](static/images/blogs-admin.py.png)
 | blog/forms.py       | forms.py    |
-| blog/test_forms.py  | test_forms.py |
-| blog/test_views.py  | test_views.py |
+![blog views](static/images/blogs-forms.py.png)
+
 
 # Lighthouse
 
