@@ -50,9 +50,9 @@ Users can create their own recipe posts, interact with other users through comme
 | **Like & Favorite Recipes** | As a user, I want to save my favorite recipes so that I can easily find them later. | Could Have |
 
 ### **Wireframes**
-- **Mobile Wireframes**: (Insert images here)  
-- **Tablet Wireframes**: (Insert images here)  
-- **Desktop Wireframes**: (Insert images here)  
+- **Mobile Wireframes**: ![Mobile Wireframes](static/images/phone-wireframe.png)
+- **Tablet Wireframes**: ![Tablet Wireframes](static/images/tablet-wireframe.png) 
+- **Desktop Wireframes**:![Desktop Wireframes](static/images/desktop.png)
 
 ### **Design**
 #### **Color Scheme**
