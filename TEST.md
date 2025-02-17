@@ -119,9 +119,9 @@ To improve next time, I will allocate more time for code review and ensure adher
 | File                   | Status   |
 |------------------------|----------|
 | settings.py            | settings.py |
-![Settings.py](static/images/settings.py)
+![Settings py](static/images/settings.py)
 | urls.py                | urls.py     |
-![Urls.py](static/images/urls.py)
+![Urls py](static/images/urls.py)
 | blog/views.py       | views.py    |
 ![blog views](static/images/blogsviews.py.png)
 | blog/urls.py        | blog/urls.py |
