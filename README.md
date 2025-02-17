@@ -128,7 +128,7 @@ AI tools like GitHub Copilot were used for:
 ---
 
 ## 🧪 Testing  
-See `TESTING.md` for details on manual testing, validators, and Lighthouse results.  
+See `TEST.md` for details on manual testing, validators, and Lighthouse results.  
 
 ---
 
