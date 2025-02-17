@@ -138,3 +138,107 @@ See `TEST.md` for details on manual testing, validators, and Lighthouse results.
 1. **Install dependencies**:
    ```sh
    pip install gunicorn django-heroku
+   ## Deployment
+
+**Mary's Recipe Blog** has been deployed using [Heroku](https://www.heroku.com/), a cloud platform for building, running, and scaling applications. Below is a detailed guide on how the deployment was set up.
+
+### Prerequisites
+Before deploying to Heroku, make sure you have the following installed:
+- **Git**: Version control tool to push your code to Heroku.
+- **Heroku CLI**: Command line interface tool to interact with Heroku.
+- **Python** and **pip**: Python environment to run your Django app.
+- **PostgreSQL**: Heroku provides a free PostgreSQL add-on for production databases.
+
+### Deployment Steps
+
+1. **Set up Heroku account**:
+   - If you haven't already, create a Heroku account at [Heroku](https://signup.heroku.com/).
+   - Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+2. **Create a Heroku app**:
+   - Log in to Heroku via the CLI:
+     ```bash
+     heroku login
+     ```
+   - In your project directory, create a Heroku app:
+     ```bash
+     heroku create marysrecipe
+     ```
+   - This will create a new Heroku app, providing a URL where your app will be live.
+
+3. **Prepare the project for deployment**:
+   - Ensure the following files are in your project directory:
+     - **Procfile**: Specifies how Heroku should run the app.
+       ```bash
+       web: gunicorn marysrecipe.wsgi
+       ```
+     - **requirements.txt**: List of dependencies for the Django app.
+       ```bash
+       pip freeze > requirements.txt
+       ```
+     - **runtime.txt**: Specifies the Python version to use.
+       ```bash
+       python-3.8.10
+       ```
+     - **PostgreSQL database**: You can add the Heroku PostgreSQL database addon.
+       ```bash
+       heroku addons:create heroku-postgresql:hobby-dev
+       ```
+
+4. **Handle static files**:
+   - To manage static files in production, install the `whitenoise` package:
+     ```bash
+     pip install whitenoise
+     ```
+   - Update `settings.py` to use Whitenoise for static files:
+     ```python
+     MIDDLEWARE = [
+         'whitenoise.middleware.WhiteNoiseMiddleware',
+         ...
+     ]
+     STATIC_URL = '/static/'
+     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+     ```
+   - Collect static files by running:
+     ```bash
+     python manage.py collectstatic
+     ```
+
+5. **Commit and push changes to Git**:
+   - Add and commit all changes:
+     ```bash
+     git add .
+     git commit -m "Prepare for Heroku deployment"
+     ```
+   - Push to Heroku:
+     ```bash
+     git push heroku master
+     ```
+
+6. **Set environment variables**:
+   - Set necessary environment variables such as `SECRET_KEY` and `DEBUG`:
+     ```bash
+     heroku config:set SECRET_KEY=your_secret_key
+     heroku config:set DEBUG=False
+     ```
+   - Run migrations to set up the database:
+     ```bash
+     heroku run python manage.py migrate
+     ```
+
+7. **Open the app**:
+   - Once the app is deployed, you can access it by running:
+     ```bash
+     heroku open
+     ```
+
+8. **Monitor the app**:
+   - To view logs for the app, use:
+     ```bash
+     heroku logs --tail
+     ```
+
+### Troubleshooting
+- If you encounter issues, check the Heroku logs for detailed error messages:
+  ```bash
+  heroku logs --tail
