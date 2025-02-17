@@ -111,19 +111,25 @@ Used Jigsaw CSS validator with no errors.
 
 ## Code Institute's Python Linter
 
+The numerous small errors in my Python code, such as incorrect blank lines, line length violations, and whitespace issues, are mainly due to a lack of time during the development process. As the deadline approached, I prioritized the functionality of the project over strict adherence to formatting standards. Although these errors do not affect the logic or performance of the application, they are important for maintaining clean, readable code.
+
+To improve next time, I will allocate more time for code review and ensure adherence to PEP8 guidelines throughout the development cycle. I would use linters earlier in the process to catch these errors before the final stages and make incremental fixes to avoid overlooking them. Additionally, I would implement more frequent code formatting sessions, either manually or through automatic tools like autopep8, to maintain consistency and readability from the start, reducing the risk of similar issues in future projects.
 
 ## Python Files
 | File                   | Status   |
 |------------------------|----------|
 | settings.py            | settings.py |
+![Settings.py](static/images/settings.py)
 | urls.py                | urls.py     |
-| recipes/views.py       | views.py    |
-| recipes/urls.py        | recipes/urls.py |
-| recipes/models.py      | models.py   |
-| recipes/admin.py       | admin.py    |
-| recipes/forms.py       | forms.py    |
-| recipes/test_forms.py  | test_forms.py |
-| recipes/test_views.py  | test_views.py |
+![Urls.py](static/images/urls.py)
+| blog/views.py       | views.py    |
+![blog views](static/images/blogsviews.py.png)
+| blog/urls.py        | blog/urls.py |
+| blog/models.py      | models.py   |
+| blog/admin.py       | admin.py    |
+| blog/forms.py       | forms.py    |
+| blog/test_forms.py  | test_forms.py |
+| blog/test_views.py  | test_views.py |
 
 # Lighthouse
 
