@@ -90,7 +90,10 @@ Coolors was used to help finalize the color palette. I wanted to go for a walm c
 
 ### **General**
 - **Navbar**: Navigation links to Home, About, Create Recipe, Login/Logout.  
-- **Footer**: Displays copyright and project name.  
+![Navbar](static/images/nav-bar.png)
+
+- **Footer**: Displays copyright and the school name.  
+![Colors](static/images/footer.png)
 
 ### **Recipes**
 - **CRUD Functionality**: Users can create, read, edit, and delete their own recipes.  
