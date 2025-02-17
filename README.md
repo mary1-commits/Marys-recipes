@@ -286,3 +286,23 @@ bash
 Copy
 Edit
 heroku run python manage.py migrate
+
+## Acknowledgements
+
+I would like to express my heartfelt gratitude to the following individuals and resources for their support and contribution to this project:
+
+- **Emma** (Facilitator): Thank you for your continuous guidance and support throughout the development process. Your feedback and encouragement have been invaluable.
+
+- **Coding Coaches**: A special thank you to my coding coaches for their expert advice, help with debugging, and for answering all my questions with patience.
+
+- **My Husband and Family**: A big thank you to my wonderful husband and family for their unwavering love, support, and understanding throughout the development of this project. Your encouragement has kept me motivated.
+
+- **ChatGPT**: A huge thank you to ChatGPT for assisting me with debugging, solving technical issues, providing explanations, and offering helpful advice. Your support made a significant difference throughout the process.
+
+- **Coolors**: Thanks to [Coolors](https://coolors.co/) for providing a fantastic color palette tool that helped me select the perfect color scheme for my project.
+
+- **GitHub Copilot**: I would like to acknowledge GitHub Copilot for providing suggestions and code snippets that helped speed up the development process.
+
+- **My Cohort Classmates**: A heartfelt thank you to my lovely cohort classmates for their camaraderie, discussions, and collaborative learning. Your support and shared experiences made this journey more enjoyable.
+
+This project wouldn't have been possible without the help and inspiration from all of you. Thank you!
