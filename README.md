@@ -5,10 +5,11 @@ Mary's Recipes Blog is a fully responsive Django web application that allows use
 Users can create their own recipe posts, interact with other users through comments, and explore a collection of dishes from around the world.
 
 ## Screenshot of Site  
-(Insert screenshot here)  
+![Website Screenshot](static/images/website.png)
+ 
 
 ## Deployed Link  
-(Insert deployed link here)  
+(https://authentic-recipe-457331f032d1.herokuapp.com/about/)  
 
 ---
 
