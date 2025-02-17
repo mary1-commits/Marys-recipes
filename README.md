@@ -62,7 +62,9 @@ Users can create their own recipe posts, interact with other users through comme
 - `#e1b382` – Light Brown  
 - `#a15c38` – Rustic Orange  
 
-Coolors was used to help finalize the color palette.
+![Colors](static/images/colors.png)
+
+Coolors was used to help finalize the color palette. I wanted to go for a walm color that represented the spices that are often used in Somali food, but I wasn't able to achieve the rich colors i wanted due to time restraint. In the future i would spend more time on the color palette and css of the website to achieve a warm and cosy look that represents the culture of the food.
 
 ### **Accessibility**
 - ✅ Semantic HTML: Proper heading structures and meaningful elements.  
@@ -87,7 +89,7 @@ Coolors was used to help finalize the color palette.
 ## 🔑 Key Features  
 
 ### **General**
-- **Navbar**: Navigation links to Home, Recipes, Create Recipe, Login/Logout.  
+- **Navbar**: Navigation links to Home, About, Create Recipe, Login/Logout.  
 - **Footer**: Displays copyright and project name.  
 
 ### **Recipes**
