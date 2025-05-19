@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n static %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,75 +8,144 @@
             {% block head_title %}
             {% endblock head_title %}
         </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <style>
+            /* Menu-specific styling */
+            .allauth-menu-container {
+                background-color: #0B3D91; /* Somali blue */
+                padding: 15px;
+                border-radius: 8px;
+                margin: 20px 0;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                font-family: Arial, sans-serif;
+            }
+            
+            .allauth-menu-title {
+                color: #FFD700; /* Gold */
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 12px;
+                display: block;
+                border-bottom: 2px solid #FFD700;
+                padding-bottom: 5px;
+            }
+            
+            .allauth-menu-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                align-items: center;
+            }
+            
+            .allauth-menu-item {
+                margin: 10px 0;
+                transition: transform 0.2s;
+            }
+            
+            .allauth-menu-item:hover {
+                transform: translateX(5px);
+            }
+            
+            .allauth-menu-link {
+                color: #E8F1F2; /* Light blue */
+                text-decoration: none;
+                padding: 8px 15px;
+                display: block;
+                border-radius: 4px;
+                transition: all 0.3s;
+                font-size: 1rem;
+            }
+            
+            .allauth-menu-link:hover {
+                background-color: rgba(255, 215, 0, 0.15);
+                color: #FFD700;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .allauth-menu-container {
+                    padding: 10px;
+                    margin: 15px 0;
+                }
+                
+                .allauth-menu-link {
+                    padding: 6px 10px;
+                    font-size: 0.9rem;
+                }
+            }
+        </style>
         {% block extra_head %}
         {% endblock extra_head %}
     </head>
     <body>
         {% block body %}
             {% if messages %}
-                <div>
+                <div class="allauth-messages">
                     <strong>{% trans "Messages:" %}</strong>
                     <ul>
                         {% for message in messages %}<li>{{ message }}</li>{% endfor %}
                     </ul>
                 </div>
             {% endif %}
-            <div>
-                <strong>{% trans "Menu:" %}</strong>
-                <ul>
+            
+            <div class="allauth-menu-container">
+                <strong class="allauth-menu-title">{% trans "Account Menu" %}</strong>
+                <ul class="allauth-menu-list">
                     {% if user.is_authenticated %}
                         {% url 'account_email' as email_url_ %}
                         {% if email_url_ %}
-                            <li>
-                                <a href="{{ email_url_ }}">{% trans "Change Email" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ email_url_ }}" class="allauth-menu-link">{% trans "Change Email" %}</a>
                             </li>
                         {% endif %}
                         {% url 'account_change_password' as change_password_url_ %}
                         {% if change_password_url_ %}
-                            <li>
-                                <a href="{{ change_password_url_ }}">{% trans "Change Password" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ change_password_url_ }}" class="allauth-menu-link">{% trans "Change Password" %}</a>
                             </li>
                         {% endif %}
                         {% url 'socialaccount_connections' as connections_url_ %}
                         {% if connections_url_ %}
-                            <li>
-                                <a href="{{ connections_url_ }}">{% trans "Account Connections" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ connections_url_ }}" class="allauth-menu-link">{% trans "Account Connections" %}</a>
                             </li>
                         {% endif %}
                         {% url 'mfa_index' as mfa_url_ %}
                         {% if mfa_url_ %}
-                            <li>
-                                <a href="{{ mfa_url_ }}">{% trans "Two-Factor Authentication" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ mfa_url_ }}" class="allauth-menu-link">{% trans "Two-Factor Authentication" %}</a>
                             </li>
                         {% endif %}
                         {% url 'usersessions_list' as usersessions_list_url_ %}
                         {% if usersessions_list_url_ %}
-                            <li>
-                                <a href="{{ usersessions_list_url_ }}">{% trans "Sessions" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ usersessions_list_url_ }}" class="allauth-menu-link">{% trans "Sessions" %}</a>
                             </li>
                         {% endif %}
                         {% url 'account_logout' as logout_url_ %}
                         {% if logout_url_ %}
-                            <li>
-                                <a href="{{ logout_url_ }}">{% trans "Sign Out" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ logout_url_ }}" class="allauth-menu-link">{% trans "Sign Out" %}</a>
                             </li>
                         {% endif %}
                     {% else %}
                         {% url 'account_login' as login_url_ %}
                         {% if login_url_ %}
-                            <li>
-                                <a href="{{ login_url_ }}">{% trans "Sign In" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ login_url_ }}" class="allauth-menu-link">{% trans "Sign In" %}</a>
                             </li>
                         {% endif %}
                         {% url 'account_signup' as signup_url_ %}
                         {% if signup_url_ %}
-                            <li>
-                                <a href="{{ signup_url_ }}">{% trans "Sign Up" %}</a>
+                            <li class="allauth-menu-item">
+                                <a href="{{ signup_url_ }}" class="allauth-menu-link">{% trans "Sign Up" %}</a>
                             </li>
                         {% endif %}
                     {% endif %}
                 </ul>
             </div>
+            
             {% block content %}
             {% endblock content %}
         {% endblock body %}

@@ -1,11 +1,28 @@
-core.Microsoft*
-core.mongo*
-core.python*
-env.py
-__pycache__/
+# Python
 *.py[cod]
-node_modules/
-.github/
-cloudinary_python.txt
-blog/fixtures
+__pycache__/
 venv/
+
+# Environment files
+env.py
+.env
+.env.local
+cloudinary_python.txt
+
+# Node
+node_modules/
+
+# Microsoft
+core.Microsoft*
+
+# MongoDB
+core.mongo*
+
+# Python cache
+core.python*  # Note: This looks like a typo - did you mean "core.python*"?
+
+# GitHub
+.github/
+
+# Blog fixtures
+blog/fixtures/

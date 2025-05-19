@@ -1,47 +1,121 @@
-/* General Styles */
+  :root {
+        --spice-primary: #e67e22;
+        --spice-secondary: #d35400;
+        --spice-light: #fff3e0;
+        --spice-dark: #2c3e50;
+    }
 body {
-    background-color: #FAF3E0; /* Warm beige */
-    color: #5C4033; /* Deep brown for readability */
-    font-family: 'Lora', serif; /* More casual, warm-feeling font */
+    background-color: #0077B6; /* Somali flag blue */
 }
 
-/* Brand & Typography */
+.main-bg {
+    background-color: #E8F1F2; /* Soft sky blue for contrast */
+}
+
+.light-bg {
+    background-color: #F4F6F7; /* Light neutral */
+}
+
+.dark-bg {
+    background-color: #0B3D91; /* Deep blue, inspired by Somali fabric & sea */
+}
+
+/* Branding */
 .brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
+    font-family: Lato, sans-serif;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: #C85C5C; /* Warm terracotta */
+    color: #FFD700; /* Gold for cultural vibrance */
 }
 
 .red-o {
-    color: #B22222; /* Rich warm red */
+    color: #E63946; /* Waran red (spear decorations) */
 }
 
 .thin {
     font-weight: 300;
 }
 
-/* Background Colors */
-.light-bg {
-    background-color: #FFF8E1; /* Soft warm cream */
+/* Navbar & Buttons */
+.btn-signup,
+.btn-edit {
+    background-color: #3CB371; /* Pastoral green, reflecting nature */
+    color: #fff;
 }
 
-.dark-bg {
-    background-color: #8B5E3C; /* Warm brown */
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #FFD700; /* Gold */
+    color: #0077B6;
 }
 
-.main-bg {
-    background-color: #FAF3E0; /* Light beige */
+.link {
+    color: #FFD700;
+    text-decoration: none;
 }
 
-/* Card Styling */
+.link:hover,
+.link:active {
+    color: #0B3D91;
+    text-decoration: underline;
+}
+
+/* Post & Text Elements */
+.post-link {
+    text-decoration: none;
+    color: #0B3D91;
+}
+
+.post-link:hover,
+.page-link {
+    color: #E63946; /* Somali traditional patterns red */
+}
+
+.post-title {
+    margin-top: 10%;
+    margin-left: 5%;
+    color: #FFD700;
+}
+
+.post-subtitle {
+    margin-left: 5%;
+    color: #F4F6F7;
+}
+
+/* Buttons */
+.btn-like {
+    color: #E63946;
+    border: none;
+    background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #FFD700;
+    background: transparent;
+    border: none;
+}
+
+.btn-delete {
+    color: #fff;
+    background: #E63946;
+}
+
+/* Additional Elements */
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+.approval {
+    color: rgb(222, 146, 168);
+}
+
+/* Image & Card Styling */
 .card {
-    border: 1px solid #E3A857; /* Mustard-colored subtle border */
-    background-color: #FFF8E1; /* Warm cream */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    background-color: transparent;
 }
 
-/* Image Container */
 .image-container {
     position: relative;
 }
@@ -51,15 +125,9 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #B22222; /* Warm red */
+    background-color: #3CB371;
 }
 
-.scale {
-    width: 100%;
-    height: auto;
-}
-
-/* Author Name */
 .author {
     color: white;
     margin: 4px;
@@ -77,7 +145,7 @@ body {
 }
 
 .masthead-text {
-    background-color: #8B5E3C; /* Warm brown */
+    background-color: #0B3D91;
     color: white;
     position: relative;
 }
@@ -94,85 +162,319 @@ body {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #8B5E3C; /* Warm brown */
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
+    background: #0B3D91;
     transform: skew(15deg);
     z-index: 100;
 }
 
-/* Post Titles & Links */
-.post-link {
-    text-decoration: none;
-    color: #C85C5C; /* Warm terracotta */
+
+/* General container */
+.signup-container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    padding: 3rem 2.5rem;
+    max-width: 480px;
+    margin: 4rem auto;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.post-link:hover,
-.page-link {
-    color: #B22222; /* Warm deep red */
+/* Title */
+.signup-title {
+    color: #0B3D91;
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-.post-title {
-    margin-top: 10%;
-    margin-left: 5%;
+/* Login link */
+.text-center {
+    text-align: center;
 }
 
-.post-subtitle {
-    margin-left: 5%;
-    color: #8B5E3C; /* Warm brown */
-}
-
-/* Buttons */
-.btn-signup,
-.btn-edit {
-    background-color: #E3A857; /* Warm golden mustard */
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.btn-signup:hover,
-.btn-edit:hover {
-    background-color: #C85C5C; /* Warm red on hover */
-    color: #FFF;
-}
-
-/* Links */
-.link {
-    color: #D2691E; /* Rich burnt orange */
+.login-link {
+    color: #0B3D91;
+    font-weight: 600;
     text-decoration: none;
 }
 
-.link:hover,
-.link:active {
-    color: #8B5E3C; /* Warm brown */
+.login-link:hover {
+    color: #E63946;
     text-decoration: underline;
 }
 
-/* Like & Delete Buttons */
-.btn-like {
-    color: #B22222; /* Warm deep red */
+/* Form field group */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* Form input styles */
+.signup-form input {
+    background-color: #F4F6F7;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px 15px;
+    width: 92%;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.signup-form input:focus {
+    border-color: #0B3D91;
+    box-shadow: 0 0 0 0.2rem rgba(11, 61, 145, 0.25);
+    outline: none;
+}
+
+/* Submit button */
+.btn-signup {
+    background-color: #0B3D91;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border-radius: 6px;
+    font-weight: 600;
     border: none;
-    background: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.btn-delete {
-    color: #fff;
-    background: #B22222; /* Stronger warm red */
+.btn-signup:hover {
+    background-color: #FFD700;
+    color: #0B3D91;
+    transform: translateY(-2px);
 }
 
-.btn-like:hover,
-.btn-like:active {
-    color: #8B5E3C; /* Warm brown */
-    background: transparent;
+/* Error styling */
+.errorlist {
+    color: #E63946;
+    font-size: 0.9rem;
+    margin: 0 0 0.3rem 0;
+    list-style: none;
+    padding: 0;
+}
+
+/* Passkey button */
+.passkey-btn {
+    background-color: #3CB371;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    margin-top: 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.passkey-btn:hover {
+    background-color: #FFD700;
+    color: #0B3D91;
+}
+
+/* Social login separator */
+.social-login {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+}
+
+/* ==================================
+Hero Banner Styling
+================================== */
+ 
+    /* Hero Banner */
+    .hero-banner {
+        background: linear-gradient(135deg, var(--spice-primary), var(--spice-secondary));
+        margin-top: -1.5rem;  /* Adjust based on your navbar height */
+    }
+
+    /* Card Styling */
+    .blog-card {
+        transition: transform 0.3s ease-in-out;
+        background-color: white;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .image-container {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .card-img-top {
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .author-badge {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background-color: var(--spice-primary);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+    }
+
+    /* Typography */
+    .text-spice {
+        color: var(--spice-dark);
+    }
+
+    .post-link:hover .text-spice {
+        color: var(--spice-primary);
+    }
+
+    /* Buttons */
+    .btn-outline-spice {
+        color: var(--spice-primary);
+        border-color: var(--spice-primary);
+    }
+
+    .btn-outline-spice:hover {
+        color: white;
+        background-color: var(--spice-primary);
+    }
+
+    /* Pagination */
+    .pagination-spice {
+        color: var(--spice-primary);
+        border-color: var(--spice-primary);
+    }
+
+    .pagination-spice:hover {
+        background-color: var(--spice-primary);
+        color: white;
+        border-color: var(--spice-primary);
+    }
+
+    /* Footer */
+    .footer-spice {
+        background-color: var(--spice-dark);
+    }
+    .image-container {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+
+/* 
+===========================
+Login Page Styling
+=========================== */
+
+/* Add these to your style.css */
+.signin-title {
+    color: #0B3D91;
+    margin-bottom: 1rem;
+}
+
+.signin-prompt {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.login-form {
+    background: #F4F6F7;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #0B3D91;
+    border-radius: 4px;
+}
+
+.btn-signin {
+    background-color: #0B3D91;
+    color: white;
+    padding: 10px 20px;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Text & Miscellaneous */
-.faded {
-    color: rgb(172, 140, 120);
+.btn-signin:hover {
+    background-color: #FFD700;
+    color: #0B3D91;
+}
+#id_remember{
+    width: auto;
 }
 
-.approval {
-    color: rgb(222, 146, 168);
-}
+  h2.display-6 {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .collaborate-header {
+        font-size: 1.5rem;
+        color: #34495e;
+        border-bottom: 2px solid #e67e22;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card.collaborate-form {
+        background-color: #fdfdfd;
+        border-radius: 12px;
+    }
+
+    .collaborate-form p {
+        margin-bottom: 1rem;
+    }
+
+    .collaborate-form input,
+    .collaborate-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .collaborate-form input:focus,
+    .collaborate-form textarea:focus {
+        border-color: #e67e22;
+        box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.2);
+        outline: none;
+    }
+
+    .btn-primary {
+        background-color: #e67e22;
+        border-color: #e67e22;
+        font-weight: 500;
+        border-radius: 8px;
+    }
+
+    .btn-primary:hover {
+        background-color: #d35400;
+        border-color: #d35400;
+    }

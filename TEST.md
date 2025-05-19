@@ -93,15 +93,15 @@ Logout:
 ![Logout](static/images/logout.html.png)
 
 Signup:
-![Signup](static/images/signup.html.png)
+![Signup](static/images/signup.png)
 
 Login:
-![Login](static/images/login.html.png)
+![Login](static/images/Login-page.png)
 
 ## Jigsaw CSS Validator
 Used Jigsaw CSS validator with no errors.
 
-![Jigsaw Validator](static/images/css-validator.png)
+![Jigsaw Validator](static/images/Css-Tests.png)
 
 ## CSS Validation
 | File         | Status   |
@@ -136,10 +136,10 @@ To improve next time, I will allocate more time for code review and ensure adher
 
 # Lighthouse
 
-
+![blog views](static/images/lighthouse-test.png)
 
 ## Performance Scores
-
+x
 | Page                | Mobile     | Desktop    |
 |---------------------|------------|------------|
 | Index               | indexmobile| indexdesktop|

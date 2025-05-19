@@ -1,46 +1,63 @@
 {% extends "account/base_entrance.html" %}
+{% load allauth i18n static %}
 
-{% load allauth i18n %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
 {% block head_title %}
-    {% trans "Signup" %}
+    {% trans "Sign Up" %}
 {% endblock head_title %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
+<div class="signup-container">
+    <h1 class="signup-title">{% trans "Create Your Account" %}</h1>
+
+    <p class="text-center">
+        {% blocktranslate %}
+            Already have an account? <a href="{{ login_url }}" class="login-link">Sign in here</a>.
+        {% endblocktranslate %}
+    </p>
+
     {% if not SOCIALACCOUNT_ONLY %}
         {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
+        <form method="post" action="{{ action_url }}" class="signup-form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.errors %}
+                        <ul class="errorlist">
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            {{ redirect_field }}
+
+            <button type="submit" class="btn-signup">{% trans "Create Account" %}</button>
+        </form>
     {% endif %}
+
     {% if PASSKEY_SIGNUP_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-            {% trans "Sign up using a passkey" %}
-        {% endelement %}
+        <div class="passkey-option">
+            <a href="{{ signup_by_passkey_url }}" class="passkey-btn">
+                {% trans "Sign up using a passkey" %}
+            </a>
+        </div>
     {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
+
+    <!-- {% if SOCIALACCOUNT_ENABLED %}
+        <div class="social-login">
+            <p class="text-center">{% trans "or" %}</p>
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        </div>
+    {% endif %} -->
+</div>
 {% endblock content %}

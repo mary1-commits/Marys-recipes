@@ -306,3 +306,66 @@ I would like to express my heartfelt gratitude to the following individuals and 
 - **My Cohort Classmates**: A heartfelt thank you to my lovely cohort classmates for their camaraderie, discussions, and collaborative learning. Your support and shared experiences made this journey more enjoyable.
 
 This project wouldn't have been possible without the help and inspiration from all of you. Thank you!
+
+
+
+
+<!-- Changes Made  -->
+
+<!-- Lo 06 :  -->
+
+We implemented a collaborate request form on the About page, allowing users to send collaboration requests directly through the website.
+
+Key Features:
+The form is connected to a Django model, capturing inputs such as name, email, and message.
+
+It uses Django’s ModelForm to render fields and validate inputs.
+
+On successful submission, the data is saved to the database.
+
+The form is styled using Bootstrap and visually integrated into the card section of the "Join Me on This Journey" call-to-action.
+
+Defensive design ensures that only valid POST submissions are processed, while others are ignored gracefully.
+
+![Model Implementation](static/images/LO%2007%20-%20Model%20Implementation%20.png)
+
+
+
+<!-- Sign Up Ui  -->
+Updated Sign-Up UI
+
+We redesigned the Sign-Up page to offer a more modern and engaging user experience. The updated UI includes:
+
+Clean and centered form layout
+
+Friendly messaging and headings
+
+Styled input fields and buttons with Bootstrap
+
+Fully responsive design
+
+Seamless integration with Django's allauth system
+
+
+![Sign Up](static/images/RegisterUi.png)
+
+
+
+<!-- Debug False -->
+Debug Mode on the site is now False
+
+![Debug Mode](static/images/DebugModeOff.png)
+
+
+<!-- Env Files Hidden -->
+Sensitive files like env are now hidder
+![Env Files Hidden](static/images/EnvIssueSolve.png)
+
+
+
+<!-- Documentations -->
+
+Added three Extra Files fordocumentation 
+-AI_DEBUGGING.md
+-AI_PERFORMANCE.md`
+-AI_USAGE.md
