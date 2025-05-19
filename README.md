@@ -9,7 +9,7 @@ Users can create their own recipe posts, interact with other users through comme
  
 
 ## Deployed Link  
-(https://authentic-recipe-457331f032d1.herokuapp.com/about/)  
+(https://authentic-recipe-457331f032d1.herokuapp.com/)  
 
 ---
 
